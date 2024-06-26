@@ -22,7 +22,10 @@ createApp({
         function update_image(variant_image) {
             image.value = variant_image;
         }
+        function toggle_in_stock() {
+            inStock.value = !inStock.value;
+        }
         // return
-        return { product, description, image, link, inStock, inventory, sale, details, variants, sizes, cart, add_to_cart, update_image };
+        return { product, description, image, link, inStock, inventory, sale, details, variants, sizes, cart, add_to_cart, update_image, toggle_in_stock };
     },
 }).mount("#app");
