@@ -65,7 +65,7 @@ const productDisplay = {
         });
 
         function add_to_cart() {
-            emit('add-to-cart')
+            emit('add-to-cart', variants.value[selectedVariant.value].id)
         }
 
         function update_image(variant_image) {
