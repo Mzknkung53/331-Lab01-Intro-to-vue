@@ -16,6 +16,7 @@ const productDisplay = {
     <p v-else>Out of Stock</p>
     <p v-if="sale">ON SALE@!</p>
     <p v-else>not on sale</p>
+    <p>shipping: {{shipping}}</p>
     <ul>
         <li v-for="detail in details">{{detail}}</li>
     </ul>
@@ -31,6 +32,13 @@ const productDisplay = {
     },
     setup(props) {
         // Attributes
+        const shipping = computed(() => {
+            if (props.premium){
+                return 'Free'
+            }else {
+                return 30
+            }
+        })
         const product = ref("Boots");
         const brand = ref("SE 331");
         const description = ref("Wears on both feet, keeps you warm");
