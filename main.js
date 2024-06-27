@@ -4,11 +4,12 @@ const app = createApp({
     setup () {
         const cart = ref(0)
         const premium = ref(true)
+        const details = ref(["50% cotton", "30% wool", "20% polyester"]);
         return {
             cart,
-            premium
+            premium,
+            details
         }
     }
 })
-app.component('product-display', productDisplay)
-app.mount('#app')
+app.component("product-display", productDisplay).component("product-details", productDetails).mount("#app");
