@@ -1,5 +1,6 @@
 const productDisplay = {
-    template:`<div class="product-display">
+    template: /*html*/
+    `<div class="product-display">
     <div class="product-container">
         <div class="product-image">
             <!-- image goes here -->
@@ -36,9 +37,9 @@ const productDisplay = {
     setup(props, { emit }) {
         // Attributes
         const shipping = computed(() => {
-            if (props.premium){
+            if (props.premium) {
                 return 'Free'
-            }else {
+            } else {
                 return 30
             }
         })
@@ -51,15 +52,15 @@ const productDisplay = {
         const onSale = ref(true);
         const reviews = ref([])
         const variants = ref([
-            { id: 2234, color: "green", image: "./assets/images/socks_green.jpg", quantity: 50, sale: true},
-            { id: 2235, color: "blue", image: "./assets/images/socks_blue.jpg", quantity: 0, sale: false},
+            { id: 2234, color: "green", image: "./assets/images/socks_green.jpg", quantity: 50, sale: true },
+            { id: 2235, color: "blue", image: "./assets/images/socks_blue.jpg", quantity: 0, sale: false },
         ]);
         const selectedVariant = ref(0);
         const sizes = ref(["S", "M", "L"]);
         const image = computed(() => {
             return variants.value[selectedVariant.value].image;
         });
-        
+
         const inStock = computed(() => {
             return variants.value[selectedVariant.value].quantity > 0;
         });
@@ -88,27 +89,27 @@ const productDisplay = {
         function updateVariant(index) {
             selectedVariant.value = index;
         }
-        function addReview(review){
+        function addReview(review) {
             reviews.value.push(review),
-            console.log(review)
+                console.log(review)
         }
 
-        return { 
-            title, 
-            description, 
-            image, 
-            link, 
-            inStock, 
-            inventory, 
-            sale, 
-            variants, 
-            sizes, 
-            add_to_cart, 
+        return {
+            title,
+            description,
+            image,
+            link,
+            inStock,
+            inventory,
+            sale,
+            variants,
+            sizes,
+            add_to_cart,
             remove_from_cart,
-            update_image, 
-            toggle_in_stock, 
+            update_image,
+            toggle_in_stock,
             updateVariant,
-            addReview, 
+            addReview,
             onSale,
             shipping,
             reviews

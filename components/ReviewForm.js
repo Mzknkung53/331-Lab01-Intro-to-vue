@@ -1,5 +1,6 @@
 const reviewForm = {
-    template: `<form class="review-form" @submit.prevent="onSubmit">
+    template: /*html*/
+    `<form class="review-form" @submit.prevent="onSubmit">
     <h3>Leave a review</h3>
     <label for="name">Name:</label>
     <input id="name" v-model="form.name">
@@ -25,6 +26,11 @@ const reviewForm = {
             rating: null
         })
         function onSubmit(){
+            if (form.name === '' || form.review === '' || form.rating === null){
+                alert('Review is incomplete. Please fill out every field')
+                return
+            }
+            
             const productReview = {
                 name: form.name,
                 review: form.review,
