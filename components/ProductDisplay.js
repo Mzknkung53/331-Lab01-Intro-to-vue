@@ -29,7 +29,7 @@ const productDisplay = {
         premium: Boolean,
         details: Array
     },
-    setup(props) {
+    setup(props, { emit }) {
         // Attributes
         const shipping = computed(() => {
             if (props.premium){
@@ -65,7 +65,7 @@ const productDisplay = {
         });
 
         function add_to_cart() {
-            cart.value++;
+            emit('add-to-cart')
         }
 
         function update_image(variant_image) {
@@ -80,7 +80,6 @@ const productDisplay = {
             selectedVariant.value = index;
         }
 
-        // Return
         return { 
             title, 
             description, 
