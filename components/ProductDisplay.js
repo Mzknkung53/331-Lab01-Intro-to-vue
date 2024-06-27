@@ -42,8 +42,6 @@ const productDisplay = {
         ]);
         const selectedVariant = ref(0);
         const sizes = ref(["S", "M", "L"]);
-        const cart = ref(0);
-
         const image = computed(() => {
             return variants.value[selectedVariant.value].image;
         });
@@ -85,7 +83,6 @@ const productDisplay = {
             details, 
             variants, 
             sizes, 
-            cart, 
             add_to_cart, 
             update_image, 
             toggle_in_stock, 
