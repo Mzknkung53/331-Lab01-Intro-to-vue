@@ -17,13 +17,16 @@ const productDisplay = {
     <p v-if="sale">ON SALE@!</p>
     <p v-else>not on sale</p>
     <p>shipping: {{shipping}}</p>
-    <product-details :details></product-details>
+    <product-details :details="details"></product-details>
     <div v-for="(variant, index) in variants" :key="variant.id" @mouseover="updateVariant(index)" class="color-circle" :style="{backgroundColor: variant.color}">{{variant.color}}</div>
     <p><span v-for="size in sizes">{{size}} ,</span></p>
     <!-- shorten version -->
     <button class="button" :disabled='!inStock' @click="add_to_cart" :class="{disabledButton: !inStock}">Add to cart</button>
+    <!-- New button to remove from cart -->
+    <button class="button" @click="remove_from_cart">Remove Cart</button>
     <!-- New button to inStock status -->
     <button class="button" @click="toggle_in_stock">Stock Status</button>
+    
 </div>`,
     props: {
         premium: Boolean,
@@ -68,6 +71,10 @@ const productDisplay = {
             emit('add-to-cart', variants.value[selectedVariant.value].id)
         }
 
+        function remove_from_cart() {
+            emit('remove-from-cart', variants.value[selectedVariant.value].id);
+        }
+
         function update_image(variant_image) {
             image.value = variant_image;
         }
@@ -91,6 +98,7 @@ const productDisplay = {
             variants, 
             sizes, 
             add_to_cart, 
+            remove_from_cart,
             update_image, 
             toggle_in_stock, 
             updateVariant, 
