@@ -26,7 +26,10 @@ const productDisplay = {
     <!-- New button to inStock status -->
     <button class="button" @click="toggle_in_stock">Stock Status</button>
 </div>`,
-    setup() {
+    props: {
+        premium: Boolean
+    },
+    setup(props) {
         // Attributes
         const product = ref("Boots");
         const brand = ref("SE 331");
@@ -87,7 +90,8 @@ const productDisplay = {
             update_image, 
             toggle_in_stock, 
             updateVariant, 
-            onSale 
+            onSale,
+            shipping
         };
     },
 }
