@@ -26,7 +26,8 @@ const productDisplay = {
     <button class="button" @click="remove_from_cart">Remove Cart</button>
     <!-- New button to inStock status -->
     <button class="button" @click="toggle_in_stock">Stock Status</button>
-    <review-form></review-form>
+    <review-lsit :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
 </div>`,
     props: {
         premium: Boolean,
@@ -48,6 +49,7 @@ const productDisplay = {
         const link = ref("https://www.camt.cmu.ac.th/");
         const sale = ref(false);
         const onSale = ref(true);
+        const reviews = ref([])
         const variants = ref([
             { id: 2234, color: "green", image: "./assets/images/socks_green.jpg", quantity: 50, sale: true},
             { id: 2235, color: "blue", image: "./assets/images/socks_blue.jpg", quantity: 0, sale: false},
@@ -86,6 +88,10 @@ const productDisplay = {
         function updateVariant(index) {
             selectedVariant.value = index;
         }
+        function addReview(review){
+            reviews.value.push(review),
+            console.log(review)
+        }
 
         return { 
             title, 
@@ -101,9 +107,11 @@ const productDisplay = {
             remove_from_cart,
             update_image, 
             toggle_in_stock, 
-            updateVariant, 
+            updateVariant,
+            addReview, 
             onSale,
-            shipping
+            shipping,
+            reviews
         };
     },
 }
