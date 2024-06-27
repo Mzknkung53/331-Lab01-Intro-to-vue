@@ -26,7 +26,7 @@ const productDisplay = {
     <button class="button" @click="remove_from_cart">Remove Cart</button>
     <!-- New button to inStock status -->
     <button class="button" @click="toggle_in_stock">Stock Status</button>
-    
+    <review-form></review-form>
 </div>`,
     props: {
         premium: Boolean,
